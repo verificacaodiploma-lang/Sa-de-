@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Instituto de Psicanálise Saúde e Bem-Estar — Verificação de Registro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      max-width: 500px;
+      background: #fff;
+      margin: auto;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2e7d32; /* verde institucional */
+      margin-bottom: 6px;
+    }
+    .subtitulo {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    input {
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2e7d32;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    #resultado {
+      margin-top: 22px;
+      display: none;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    .linha {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .situacao {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .rodape {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+  </style></head><body>  <div class="card">
+    <h1>Verificação de Registro</h1>
+    <div class="subtitulo">Instituto de Psicanálise, Saúde e Bem-Estar</div><input id="busca" placeholder="Digite o número do registro">
+<button onclick="buscarRegistro()">Pesquisar</button>
+
+<div id="resultado">
+  <div class="linha"><strong>Nome:</strong> <span id="nome"></span></div>
+  <div class="linha"><strong>Instituição:</strong> <span id="instituicao"></span></div>
+  <div class="linha"><strong>Formação:</strong> <span id="curso"></span></div>
+  <div class="linha"><strong>Conclusão:</strong> <span id="conclusao"></span></div>
+  <div class="linha"><strong>Registro:</strong> <span id="registro"></span></div>
+  <div class="linha"><strong>Situação:</strong> <span id="situacao" class="situacao"></span></div>
+</div>
+
+<div class="rodape">
+  Documento para fins de verificação institucional
+</div>
+
+  </div>  <script>
+    function buscarRegistro(){
+      const valor = document.getElementById('busca').value.trim();
+      const resultado = document.getElementById('resultado');
+
+      const registros = {
+        "474556-77": {
+          nome: "Maria Fernanda Palhares",
+          instituicao: "Instituto de Psicanálise Saúde e Bem-Estar",
+          curso: "Formação em Psicanálise",
+          conclusao: "19/06/2022",
+          registro: "474556-77",
+          situacao: "Regular"
+        }
+      };
+
+      if(!registros[valor]){
+        alert("Registro não localizado.");
+        resultado.style.display = "none";
+        return;
+      }
+
+      const dados = registros[valor];
+      document.getElementById("nome").innerText = dados.nome;
+      document.getElementById("instituicao").innerText = dados.instituicao;
+      document.getElementById("curso").innerText = dados.curso;
+      document.getElementById("conclusao").innerText = dados.conclusao;
+      document.getElementById("registro").innerText = dados.registro;
+      document.getElementById("situacao").innerText = dados.situacao;
+
+      resultado.style.display = "block";
+    }
+  </script></body>
+</html>
